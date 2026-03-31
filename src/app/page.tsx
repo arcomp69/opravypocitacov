@@ -175,9 +175,7 @@ function Hero() {
               <TextReveal delay={0.15}>Komplexná správa</TextReveal>
               <br />
               <AnimateIn variant="fade-up" delay={0.3} className="inline-block">
-                <span className="animated-gradient bg-clip-text text-transparent">
-                  IT infraštruktúry
-                </span>
+                <span className="gradient-text">IT infraštruktúry</span>
               </AnimateIn>
               <br />
               <TextReveal delay={0.45}>pre firmy</TextReveal>
