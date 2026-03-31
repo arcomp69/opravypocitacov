@@ -166,17 +166,19 @@ function Hero() {
           <div className="max-w-3xl">
             <AnimateIn variant="fade-up">
               <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
-                <FileText className="h-3 w-3" />
-                SLA zmluvy šité na mieru
+                <Zap className="h-3 w-3" />
+                Váš IT partner od roku 2005
               </div>
             </AnimateIn>
 
             <h1 className="font-[family-name:var(--font-bricolage)] text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight">
               <TextReveal delay={0.15}>Komplexná správa</TextReveal>
               <br />
-              <span className="animated-gradient bg-clip-text text-transparent">
-                <TextReveal delay={0.3}>IT infraštruktúry</TextReveal>
-              </span>
+              <AnimateIn variant="fade-up" delay={0.3} className="inline-block">
+                <span className="animated-gradient bg-clip-text text-transparent">
+                  IT infraštruktúry
+                </span>
+              </AnimateIn>
               <br />
               <TextReveal delay={0.45}>pre firmy</TextReveal>
             </h1>
@@ -423,12 +425,30 @@ const solutions = [
     ],
   },
   {
+    icon: Shield,
+    name: "ESET",
+    tag: "Antivírus",
+    accent: "oklch(0.6 0.18 145)",
+    accentBg: "oklch(0.6 0.18 145 / 0.08)",
+    accentBorder: "oklch(0.6 0.18 145 / 0.2)",
+    description:
+      "Predaj licencií ESET pre firemných zákazníkov. Spoľahlivá ochrana koncových zariadení, serverov a e-mailov pred vírusmi, ransomvérom a online hrozbami.",
+    features: [
+      "ESET Endpoint Security",
+      "Ochrana serverov",
+      "Antispam a e-mail filter",
+      "Licencie pre firmy",
+      "Centrálna správa ESET PROTECT",
+      "Pravidelné aktualizácie",
+    ],
+  },
+  {
     icon: HardDrive,
     name: "Acronis Cyber Protect Cloud",
     tag: "Zálohovanie",
-    accent: "oklch(0.65 0.14 155)",
-    accentBg: "oklch(0.65 0.14 155 / 0.08)",
-    accentBorder: "oklch(0.65 0.14 155 / 0.2)",
+    accent: "oklch(0.65 0.14 220)",
+    accentBg: "oklch(0.65 0.14 220 / 0.08)",
+    accentBorder: "oklch(0.65 0.14 220 / 0.2)",
     description:
       "Zálohovanie a kybernetická ochrana v jednom. Ako Acronis Partner nasadzujeme cloudové zálohy, ochranu pred ransomvérom a riešenia pre obnovu dát pre celú vašu infraštruktúru.",
     features: [
@@ -443,7 +463,7 @@ const solutions = [
   {
     icon: KeyRound,
     name: "Kerio Control / GFI Software",
-    tag: "Bezpečnosť",
+    tag: "Firewall",
     accent: "oklch(0.65 0.16 280)",
     accentBg: "oklch(0.65 0.16 280 / 0.08)",
     accentBorder: "oklch(0.65 0.16 280 / 0.2)",
@@ -477,7 +497,7 @@ function Solutions() {
           description="Autorizovaný partner pre predaj, nasadenie a správu podnikového softvéru. Všetko od licencie po implementáciu a podporu."
         />
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2">
           {solutions.map((solution, i) => (
             <AnimateIn
               key={solution.name}
@@ -889,8 +909,8 @@ function About() {
               className="mx-auto mb-8 h-14 w-auto brightness-0 invert opacity-80"
             />
             <h2 className="font-[family-name:var(--font-bricolage)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Váš spoľahlivý
-              <span className="text-primary"> IT partner</span>
+              Váš IT partner
+              <span className="text-primary"> od roku 2005</span>
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               AR COMP je značka spoločnosti A&nbsp;&&nbsp;R s.r.o. so sídlom v
