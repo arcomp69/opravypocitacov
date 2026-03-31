@@ -35,6 +35,14 @@ import {
   AnimateIn,
   StaggerContainer,
   StaggerItem,
+  TextReveal,
+  TiltCard,
+  MagneticWrap,
+  Counter,
+  ScrollProgress,
+  CursorGlow,
+  FloatingShapes,
+  GradientBorderCard,
 } from "@/components/animate-in";
 import Image from "next/image";
 import Link from "next/link";
@@ -147,35 +155,33 @@ function Hero() {
       <div className="hero-mesh noise absolute inset-0" />
       <div className="grid-pattern absolute inset-0" />
 
-      <div className="absolute right-[10%] top-[20%] h-64 w-64 animate-float rounded-full bg-primary/5 blur-3xl" />
-      <div className="absolute bottom-[15%] left-[5%] h-48 w-48 animate-float rounded-full bg-primary/8 blur-3xl [animation-delay:2s]" />
+      {/* Cursor-following glow */}
+      <CursorGlow className="pointer-events-none fixed z-30 hidden h-[500px] w-[500px] rounded-full bg-primary/[0.03] blur-[100px] lg:block" />
 
-      <div className="absolute left-0 top-1/3 h-px w-1/4 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="absolute right-0 top-2/3 h-px w-1/3 bg-gradient-to-l from-transparent via-primary/15 to-transparent" />
+      {/* Animated floating shapes */}
+      <FloatingShapes />
 
       <div className="relative mx-auto flex min-h-[calc(100dvh-4rem)] max-w-7xl items-center px-5 sm:px-8">
         <div className="w-full py-20 lg:py-0">
           <div className="max-w-3xl">
             <AnimateIn variant="fade-up">
               <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
-                <Zap className="h-3 w-3" />
-                Váš IT partner od roku 2005
+                <FileText className="h-3 w-3" />
+                SLA zmluvy šité na mieru
               </div>
             </AnimateIn>
 
-            <AnimateIn variant="fade-up" delay={0.1}>
-              <h1 className="font-[family-name:var(--font-bricolage)] text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight">
-                Komplexná správa
-                <br />
-                <span className="bg-gradient-to-r from-primary via-primary to-[oklch(0.7_0.15_270)] bg-clip-text text-transparent">
-                  IT infraštruktúry
-                </span>
-                <br />
-                pre firmy
-              </h1>
-            </AnimateIn>
+            <h1 className="font-[family-name:var(--font-bricolage)] text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight">
+              <TextReveal delay={0.15}>Komplexná správa</TextReveal>
+              <br />
+              <span className="animated-gradient bg-clip-text text-transparent">
+                <TextReveal delay={0.3}>IT infraštruktúry</TextReveal>
+              </span>
+              <br />
+              <TextReveal delay={0.45}>pre firmy</TextReveal>
+            </h1>
 
-            <AnimateIn variant="fade-up" delay={0.2}>
+            <AnimateIn variant="fade-up" delay={0.5}>
               <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
                 Jeden kontaktný bod pre celú vašu IT infraštruktúru — od
                 serverov a sietí cez licencie Microsoft 365 až po zálohovanie a
@@ -184,34 +190,39 @@ function Hero() {
               </p>
             </AnimateIn>
 
-            <AnimateIn variant="fade-up" delay={0.3}>
+            <AnimateIn variant="fade-up" delay={0.6}>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link href="#kontakt">
-                  <Button
-                    size="lg"
-                    className="group h-12 gap-2 rounded-lg px-7 text-sm font-semibold shadow-[0_0_24px_oklch(0.72_0.14_220/0.2)] transition-shadow hover:shadow-[0_0_40px_oklch(0.72_0.14_220/0.3)]"
-                  >
-                    Dohodnúť konzultáciu
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </Button>
-                </Link>
-                <Link href="#sluzby">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="h-12 rounded-lg border-border/60 px-7 text-sm hover:bg-accent"
-                  >
-                    Preskúmať služby
-                  </Button>
-                </Link>
+                <MagneticWrap>
+                  <Link href="#kontakt">
+                    <Button
+                      size="lg"
+                      className="group h-12 gap-2 rounded-lg px-7 text-sm font-semibold shadow-[0_0_24px_oklch(0.72_0.14_220/0.2)] transition-all hover:shadow-[0_0_48px_oklch(0.72_0.14_220/0.35)]"
+                    >
+                      Dohodnúť konzultáciu
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </Button>
+                  </Link>
+                </MagneticWrap>
+                <MagneticWrap>
+                  <Link href="#sluzby">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="h-12 rounded-lg border-border/60 px-7 text-sm hover:bg-accent"
+                    >
+                      Preskúmať služby
+                    </Button>
+                  </Link>
+                </MagneticWrap>
               </div>
             </AnimateIn>
 
-            <AnimateIn variant="fade-in" delay={0.5}>
+            <AnimateIn variant="fade-in" delay={0.8}>
               <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-border/40 pt-8">
                 {[
                   "Microsoft Partner",
                   "Acronis Partner",
+                  "ESET Partner",
                   "EPSON & Konica",
                   "Dell servery",
                 ].map((item) => (
@@ -367,17 +378,21 @@ function Services() {
         <StaggerContainer className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {services.map((service) => (
             <StaggerItem key={service.title}>
-              <div className="glow-border group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-card/50 p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80">
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors duration-300 group-hover:bg-primary/15">
-                  <service.icon className="h-[17px] w-[17px]" />
-                </div>
-                <h3 className="mb-1.5 font-[family-name:var(--font-bricolage)] text-[14px] font-semibold leading-snug">
-                  {service.title}
-                </h3>
-                <p className="text-[12px] leading-relaxed text-muted-foreground">
-                  {service.description}
-                </p>
-              </div>
+              <TiltCard className="h-full">
+                <GradientBorderCard className="h-full">
+                  <div className="flex h-full flex-col p-5">
+                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors duration-300 group-hover:bg-primary/15">
+                      <service.icon className="h-[17px] w-[17px]" />
+                    </div>
+                    <h3 className="mb-1.5 font-[family-name:var(--font-bricolage)] text-[14px] font-semibold leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="text-[12px] leading-relaxed text-muted-foreground">
+                      {service.description}
+                    </p>
+                  </div>
+                </GradientBorderCard>
+              </TiltCard>
             </StaggerItem>
           ))}
         </StaggerContainer>
@@ -606,33 +621,35 @@ function Servers() {
               variant="fade-up"
               delay={0.15 + i * 0.1}
             >
-              <div className="glow-border group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80">
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
-                    <option.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-[family-name:var(--font-bricolage)] text-lg font-bold">
-                    {option.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">
-                    {option.description}
-                  </p>
+              <TiltCard className="h-full">
+                <GradientBorderCard className="h-full">
+                  <div className="flex h-full flex-col p-6">
+                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
+                      <option.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-[family-name:var(--font-bricolage)] text-lg font-bold">
+                      {option.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-[13px] leading-relaxed text-muted-foreground">
+                      {option.description}
+                    </p>
 
-                  <div className="mt-6 border-t border-border/40 pt-5">
-                    <ul className="space-y-2.5">
-                      {option.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-center gap-2 text-[12px] text-muted-foreground"
-                        >
-                          <ChevronRight className="h-3 w-3 shrink-0 text-primary" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mt-6 border-t border-border/40 pt-5">
+                      <ul className="space-y-2.5">
+                        {option.features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-center gap-2 text-[12px] text-muted-foreground"
+                          >
+                            <ChevronRight className="h-3 w-3 shrink-0 text-primary" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </GradientBorderCard>
+              </TiltCard>
             </AnimateIn>
           ))}
         </div>
@@ -788,7 +805,7 @@ function WhyUs() {
           className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.1}
         >
-          {[
+          {([
             {
               icon: Handshake,
               title: "Osobný prístup",
@@ -817,7 +834,7 @@ function WhyUs() {
               icon: Shield,
               title: "Certifikovaní partneri",
               description:
-                "Sme autorizovaný Microsoft Partner, Acronis Partner a predajca EPSON a Konica Minolta. Pracujeme s overenými riešeniami.",
+                "Sme autorizovaný Microsoft Partner, Acronis Partner, ESET Partner a predajca EPSON a Konica Minolta. Pracujeme s overenými riešeniami.",
             },
             {
               icon: Zap,
@@ -825,19 +842,23 @@ function WhyUs() {
               description:
                 "Nečakáme, kým sa niečo pokazí. Monitorujeme, aktualizujeme a predchádzame problémom skôr, ako o nich viete.",
             },
-          ].map((item) => (
+          ] as const).map((item) => (
             <StaggerItem key={item.title}>
-              <div className="group flex h-full flex-col rounded-xl border border-border/60 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80">
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
-                  <item.icon className="h-[18px] w-[18px]" />
-                </div>
-                <h3 className="font-[family-name:var(--font-bricolage)] text-[15px] font-semibold">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
+              <TiltCard className="h-full">
+                <GradientBorderCard className="h-full">
+                  <div className="flex h-full flex-col p-6">
+                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/15 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
+                      <item.icon className="h-[18px] w-[18px]" />
+                    </div>
+                    <h3 className="font-[family-name:var(--font-bricolage)] text-[15px] font-semibold">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </GradientBorderCard>
+              </TiltCard>
             </StaggerItem>
           ))}
         </StaggerContainer>
@@ -868,8 +889,8 @@ function About() {
               className="mx-auto mb-8 h-14 w-auto brightness-0 invert opacity-80"
             />
             <h2 className="font-[family-name:var(--font-bricolage)] text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Váš IT partner
-              <span className="text-primary"> od roku 2005</span>
+              Váš spoľahlivý
+              <span className="text-primary"> IT partner</span>
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               AR COMP je značka spoločnosti A&nbsp;&&nbsp;R s.r.o. so sídlom v
@@ -928,6 +949,7 @@ function About() {
                 {[
                   "Microsoft Partner",
                   "Acronis Partner",
+                  "ESET Partner",
                   "EPSON",
                   "Konica Minolta",
                   "Dell Technologies",
@@ -1030,16 +1052,18 @@ function Contact() {
 
         <AnimateIn variant="fade-up" delay={0.4}>
           <div className="mx-auto mt-12 max-w-md text-center">
-            <a href="tel:+421911996699">
-              <Button
-                size="lg"
-                className="group h-12 gap-2 rounded-lg px-8 text-sm font-semibold shadow-[0_0_24px_oklch(0.72_0.14_220/0.2)] transition-shadow hover:shadow-[0_0_40px_oklch(0.72_0.14_220/0.3)]"
-              >
-                <Phone className="h-4 w-4" />
-                Zavolajte nám
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Button>
-            </a>
+            <MagneticWrap className="inline-block">
+              <a href="tel:+421911996699">
+                <Button
+                  size="lg"
+                  className="group h-12 gap-2 rounded-lg px-8 text-sm font-semibold shadow-[0_0_24px_oklch(0.72_0.14_220/0.2)] transition-all hover:shadow-[0_0_48px_oklch(0.72_0.14_220/0.35)]"
+                >
+                  <Phone className="h-4 w-4" />
+                  Zavolajte nám
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Button>
+              </a>
+            </MagneticWrap>
           </div>
         </AnimateIn>
       </div>
@@ -1103,6 +1127,7 @@ function Footer() {
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Header />
       <main className="flex-1">
         <Hero />
